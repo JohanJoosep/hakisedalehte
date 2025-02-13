@@ -1,0 +1,76 @@
+<!DOCTYPE html>  <!-- See on lehekülg html -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- refresh 
+    <meta http-equiv="refresh" content="5"> -->
+    <meta name="description" content="A basic HTML page example">
+    <title>H&auml;ki seda lehek&uuml;lge</title>
+    <!-- Siin on CSS kood, milles on kirjas lehekülje design -->
+    <style> 
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        main {
+            padding: 1.5rem;
+        }
+        footer {
+            text-align: center;
+            padding: 1rem 0;
+            background: #333;
+            color: #fff;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<!-- Siin on lehekülje peamised osad -->
+<body>
+    <header>
+        <h1>H&auml;ki seda lehek&uuml;lge</h1>
+        <p>T&ouml;&ouml;tlemisel</p>
+    </header>
+    <main>
+        <h2>Tase 1</h2>
+        <input type="text" id="textBox" placeholder="Parool"> <!-- Siin on tekstikast -->
+        <button onclick="checkInput()">Submit</button> <!-- Siin käivitab funktsiooni chackInput(), mis kontrollib kas parool on õige -->
+    
+        <p id="message" style="display: none;">Hea töö!</p>
+        <button id="newButton" style="display: none;" onclick="window.location.href='https://www.example.com';">Go to Example Site</button> <!-- järgmisele tasemele -->
+    
+        <!-- Siin on JavaScript -->
+        <script>
+            function checkInput() {
+                const input = document.getElementById("textBox").value;
+                const message = document.getElementById("message");
+                const newButton = document.getElementById("newButton");
+    
+                // Kontrollib kas tekstikastis olnud väärtus on õige
+                if (input === "uI8Ä%") { 
+                    message.style.display = "block";
+                    newButton.style.display = "block";
+                } else {
+                    alert("😢 Vale parool! Proovi uuesti");
+                }
+            }
+        </script>
+    </main>
+    <footer>
+        <p>&copy; 2024 My Website</p>
+    </footer>
+</body>
+</html>
