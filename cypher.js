@@ -15,7 +15,7 @@ function caesarCipherDecrypt(text, shift) {
 
 function checkPassword() {
     let password = document.getElementById("passwordBox").value;
-    let decryptedText = caesarCipherDecrypt("mjkvlmjkohz", 3);
+    let decryptedText = caesarCipherDecrypt("Wklv lv d whvw phvvdjh", 3);
     
     if (password === decryptedText) {
         document.getElementById("message").style.display = "block";
@@ -29,4 +29,3 @@ function decryptUserInput() {
     let encryptedText = document.getElementById("encryptedText").value;
     let decryptedText = caesarCipherDecrypt(encryptedText, 3);
     document.getElementById("decryptedOutput").innerText = "Dekrüpteeritud tekst: " + decryptedText;
-}
