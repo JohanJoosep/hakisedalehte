@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Küberoskuste treenimis lehekülg">
+    <title>H&auml;ki seda lehek&uuml;lge</title>
+    <style> 
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding: 1rem 0;
+        }
+        main {
+            padding: 1.5rem;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <button onclick="window.location.href='https://johanjoosep.github.io/hakisedalehte/';">Kodu</button>
+    </header>
+    <main>
+        <h2>Tase 3</h2>
+        <p>
+        Siin on krüpteeritud sõnum. Püüa aru saada, millist šifreeringut kasutati ja sisesta õige parool! 
+        </p>
+        <p><strong>Krüpteeritud tekst:</strong> "mjkvlmjkohz"</p>
+        <input type="text" id="passwordBox" placeholder="Sisesta parool"> 
+        <button onclick="checkPassword()">Kontrolli</button>
+        
+        <p id="message" style="display: none;"></p>
+
+        <h3>Proovi ise dešifreerida:</h3>
+        <input type="text" id="encryptedText" placeholder="Sisesta krüpteeritud tekst">
+        <button onclick="decryptUserInput()">Dekrüpteeri</button>
+        <p id="decryptedOutput"></p>
+
+    </main>
+    <script src="cipher.js"></script>
+</body>
+</html>
