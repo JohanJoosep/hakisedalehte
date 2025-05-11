@@ -44,7 +44,7 @@
         // võtab parooli failist
         let correctPassword = "";
 
-        fetch("tase5-password.txt")
+        fetch("tase5-javascript.txt")
             .then(response => response.text())
             .then(data => {
                 correctPassword = data.trim();
@@ -55,7 +55,7 @@
             const message = document.getElementById("message");
 
             if (input === correctPassword) {
-                message.textContent = "Parool on õige, aga kas leiad ka järgmise?;
+                message.textContent = "Parool on õige, aga kas leiad ka järgmise?";
             } else {
                 message.textContent = "Vale parool, proovige uuesti.";
             }
