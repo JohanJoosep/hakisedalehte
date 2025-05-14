@@ -1,5 +1,3 @@
-// script.js
-
 function caesarCipherDecrypt(text, shift) {
     let result = "";
     for (let i = 0; i < text.length; i++) {
@@ -17,7 +15,7 @@ function caesarCipherDecrypt(text, shift) {
 
 function checkPassword() {
     let password = document.getElementById("passwordBox").value;
-    let decryptedText = "gftpdhghejr"; // Muudetud parooliks
+    let decryptedText = caesarCipherDecrypt("mjkvlmjkohz", 5); // Näide: Caesar -5
 
     if (password === decryptedText) {
         document.getElementById("message").style.display = "block";
@@ -29,6 +27,6 @@ function checkPassword() {
 
 function decryptUserInput() {
     let encryptedText = document.getElementById("encryptedText").value;
-    let decryptedText = caesarCipherDecrypt(encryptedText, 3);
+    let decryptedText = caesarCipherDecrypt(encryptedText, 5);
     document.getElementById("decryptedOutput").innerText = "Dekrüpteeritud tekst: " + decryptedText;
 }
