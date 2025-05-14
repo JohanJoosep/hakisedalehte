@@ -5,3 +5,4 @@ tase 2 parool lähtekoodist
 tase 3 pildist parooli leidmine
 tase 4 on krüpteerimiine
 tase 5 url
+tase 6 brute force
