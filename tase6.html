@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Häki seda lehekülge</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding: 1rem 0;
+        }
+        main {
+            padding: 1.5rem;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <button onclick="window.location.href='https://johanjoosep.github.io/hakisedalehte/';">Kodu</button>
+    </header>
+    <main>
+        <h2>Tase 6</h2>
+        <p>Leia parool dekodeerides.</p>
+
+        <input type="text" id="textBox" placeholder="Parool" />
+        <button onclick="checkInput()">Submit</button>
+
+        <p id="message" style="display: none;">Hea töö!</p>
+        <p id="encodedOutput"></p>
+        <button
+            id="newButton"
+            style="display: none;"
+            onclick="window.location.href='https://johanjoosep.github.io/hakisedalehte/tase7.html';"
+        >
+            Tase 7
+        </button>
+
+        <script>
+            function decode(str) {
+                return atob(str);
+            }
+
+            function checkInput() {
+                const input = document.getElementById("textBox").value.trim();
+                const message = document.getElementById("message");
+                const newButton = document.getElementById("newButton");
+                const encodedOutput = document.getElementById("encodedOutput");
+
+                const correct = decode("c2lnbWE=");
+
+                if (input === correct) {
+                    message.style.display = "block";
+                    newButton.style.display = "inline-block";
+                } else {
+                    alert("❌ Vale parool!");
+                }
+            }
+        </script>
+    </main>
+</body>
+</html>
