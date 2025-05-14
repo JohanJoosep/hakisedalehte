@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Häki seda lehekülge</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding: 1rem 0;
+        }
+        main {
+            padding: 1.5rem;
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <button onclick="window.location.href='https://johanjoosep.github.io/hakisedalehte/';">Kodu</button>
+    </header>
+    <main>
+        <h2>Tase 8</h2>
+        <p>Rohkem ülesandeid pole veel. :(</p>
+    </main>
+</body>
+</html>
