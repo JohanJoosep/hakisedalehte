@@ -8,7 +8,6 @@
     
     <meta name="description" content="Küberoskuste treenimis lehekülg">
     <title>H&auml;ki seda lehek&uuml;lge</title>
-    <!-- Siin on CSS kood, milles on kirjas lehekülje design -->
     <style> 
         body {
             font-family: Arial, sans-serif;
@@ -33,27 +32,22 @@
         }
     </style>
 </head>
-<!-- Siin on lehekülje peamised osad -->
 <body>
     <header>
         <button onclick="window.location.href='https://johanjoosep.github.io/hakisedalehte/';">Kodu</button>
     </header>
     <main>
         <h2>Tase 2</h2>
-        <input type="text" id="textBox" placeholder="Parool"> <!-- Siin on tekstikast -->
-        <button onclick="checkInput()">Submit</button> <!-- Siin käivitab funktsiooni chackInput(), mis kontrollib kas parool on õige -->
-    
+        <input type="text" id="textBox" placeholder="Parool"> 
+        <button onclick="checkInput()">Submit</button> 
         <p id="message" style="display: none;">Hea töö!</p>
         <button id="newButton" style="display: none;" onclick="window.location.href='https://johanjoosep.github.io/hakisedalehte/tase3.html';">Go to Example Site</button> <!-- järgmisele tasemele -->
-    
-        <!-- Siin on JavaScript -->
         <script>
             function checkInput() {
                 const input = document.getElementById("textBox").value;
                 const message = document.getElementById("message");
                 const newButton = document.getElementById("newButton");
     
-                // Kontrollib kas tekstikastis olnud väärtus on õige
                 if (input === "uI8Ä%") { 
                     message.style.display = "block";
                     newButton.style.display = "block";
