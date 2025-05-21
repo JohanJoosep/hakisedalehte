@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="et">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Küberoskuste treenimis lehekülg">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Küberoskuste treenimis lehekülg" />
     <title>H&auml;ki seda lehek&uuml;lge</title>
-    <style> 
+    <style>
         body {
             font-family: Arial, sans-serif;
             line-height: 1.6;
@@ -18,13 +18,10 @@
             background: #333;
             color: #fff;
             padding: 1rem 0;
+            text-align: center;
         }
         main {
             padding: 1.5rem;
-        }
-        a {
-            color: #007bff;
-            text-decoration: none;
         }
     </style>
 </head>
@@ -34,22 +31,54 @@
     </header>
     <main>
         <h2>Tase 4</h2>
-        <p>
-        Siin on krüpteeritud sõnum. Püüa aru saada, millist šifreeringut kasutati ja sisesta õige parool! 
-        </p>
-        <p><strong>Krüpteeritud tekst:</strong> "mjkvlmjkohz"</p>
-        <input type="text" id="passwordBox" placeholder="Sisesta parool"> 
+        <p>Siin on krüpteeritud sõnum. Püüa aru saada, millist šifreeringut kasutati ja sisesta õige parool!</p>
+        <p><strong>Krüpteeritud tekst:</strong> "ptkqjn"</p>
+        <input type="text" id="passwordBox" placeholder="Sisesta parool" />
         <button onclick="checkPassword()">Kontrolli</button>
-        
-        <p id="message" style="display: none;"></p>
 
-        <h3>Proovi ise dešifreerida:</h3>
-        <input type="text" id="encryptedText" placeholder="Sisesta krüpteeritud tekst">
-        <button onclick="decryptUserInput()">Dekrüpteeri</button>
-        <p id="decryptedOutput"></p>
+        <p id="message" style="display: none; color: green; font-weight: bold;">Hea töö!</p>
+        <button id="newButton" style="display: none;" onclick="window.location.href='https://johanjoosep.github.io/hakisedalehte/tase5.html';">Tase 5</button>
+
+        <h3>Proovi ise krüpteerida:</h3>
+        <input type="text" id="plainText" placeholder="Sisesta tavaline tekst" />
+        <button onclick="encryptUserInput()">Krüpteeri</button>
+        <p id="encryptedOutput"></p>
     </main>
 
-    <!-- Lisa see rida skripti laadimiseks -->
-    <script src="script.js" defer></script>
+    <script>
+        function caesarEncrypt(text, shift) {
+            return text.split('').map(char => {
+                if (char.match(/[a-z]/)) {
+                    let code = char.charCodeAt(0);
+                    let newCode = ((code - 97 + shift) % 26) + 97;
+                    return String.fromCharCode(newCode);
+                } else {
+                    return char;
+                }
+            }).join('');
+        }
+
+        function checkPassword() {
+            const userInput = document.getElementById('passwordBox').value.trim().toLowerCase();
+            const correctAnswer = "koflei";
+            const messageEl = document.getElementById('message');
+            const newButton = document.getElementById('newButton');
+
+            if (userInput === correctAnswer) {
+                messageEl.style.display = 'block';
+                newButton.style.display = 'inline-block';
+            } else {
+                alert("❌ Vale parool! Proovi uuesti.");
+                messageEl.style.display = 'none';
+                newButton.style.display = 'none';
+            }
+        }
+
+        function encryptUserInput() {
+            const plainText = document.getElementById('plainText').value.trim().toLowerCase();
+            const encrypted = caesarEncrypt(plainText, 5);
+            document.getElementById('encryptedOutput').textContent = `Krüpteeritud tekst: ${encrypted}`;
+        }
+    </script>
 </body>
 </html>
