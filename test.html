@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HackVerse - Learn Ethical Hacking</title>
+    <style>
+        body {
+            background-color: #0a0a0a;
+            color: #00ff00;
+            font-family: 'Courier', monospace;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 75%; /* Limit width to 75% of the screen on desktop */
+            margin: 0 auto; /* Center the container */
+        }
+        .header {
+            color: #0000c2;
+            white-space: pre; /* Preserve ASCII art formatting */
+            overflow: hidden; /* Prevent overflow */
+            margin-top: 20px;
+            padding: 10px;
+        }
+        .terminal-box {
+            background: black;
+            border: 2px solid #00ff00;
+            padding: 20px;
+            width: 100%; /* Use full width of the container */
+            margin: 20px auto;
+            text-align: left;
+        }
+        .input-line::before {
+            content: "user@hackverse:~$ ";
+            color: #00ff00;
+        }
+        .button {
+            background: #00ff00;
+            color: black;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+            font-weight: bold;
+            display: block;
+            width: 200px;
+            margin: 10px auto;
+        }
+        .button:hover {
+            background: #33ff33;
+        }
+        .intro-box {
+            background: black;
+            border: 2px solid #00ff00;
+            padding: 15px;
+            width: 100%; /* Use full width of the container */
+            margin: 20px auto;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header" id="ascii-header">
+            <pre>
+                .S    S.    .S_SSSs     .S    S.    .S    sSSs    sSSs   .S_sSSs     .S_SSSs    S.        sSSs   .S    S.   sdSS_SSSSSSbs    sSSs  
+                .SS    SS.  .SS~SSSSS   .SS    SS.  .SS   d%%SP   d%%SP  .SS~YS%%b   .SS~SSSSS   SS.      d%%SP  .SS    SS.  YSSS~S%SSSSSP   d%%SP  
+                S%S    S%S  S%S   SSSS  S%S    S&S  S%S  d%S'    d%S'    S%S   `S%b  S%S   SSSS  S%S     d%S'    S%S    S%S       S%S       d%S'    
+                S%S    S%S  S%S    S%S  S%S    d*S  S%S  S%|     S%S     S%S    S%S  S%S    S%S  S%S     S%S     S%S    S%S       S%S       S%S     
+                S%S SSSS%S  S%S SSSS%S  S&S   .S*S  S&S  S&S     S&S     S%S    S&S  S%S SSSS%S  S&S     S&S     S%S SSSS%S       S&S       S&S     
+                S&S  SSS&S  S&S  SSS%S  S&S_sdSSS   S&S  Y&Ss    S&S_Ss  S&S    S&S  S&S  SSS%S  S&S     S&S_Ss  S&S  SSS&S       S&S       S&S_Ss  
+                S&S    S&S  S&S    S&S  S&S~YSSY%b  S&S  `S&&S   S&S~SP  S&S    S&S  S&S    S&S  S&S     S&S~SP  S&S    S&S       S&S       S&S~SP  
+                S&S    S&S  S&S    S&S  S&S    `S%  S&S    `S*S  S&S     S&S    S&S  S&S    S&S  S&S     S&S     S&S    S&S       S&S       S&S     
+                S*S    S*S  S*S    S&S  S*S     S%  S*S     l*S  S*b     S*S    d*S  S*S    S&S  S*b     S*b     S*S    S*S       S*S       S*b     
+                S*S    S*S  S*S    S*S  S*S     S&  S*S    .S*P  S*S.    S*S   .S*S  S*S    S*S  S*S.    S*S.    S*S    S*S       S*S       S*S.    
+                S*S    S*S  S*S    S*S  S*S     S&  S*S  sSS*S    SSSbs  S*S_sdSSS   S*S    S*S   SSSbs   SSSbs  S*S    S*S       S*S        SSSbs  
+                SSS    S*S  SSS    S*S  S*S     SS  S*S  YSS'      YSSP  SSS~YSSY    SSS    S*S    YSSP    YSSP  SSS    S*S       S*S         YSSP  
+                       SP          SP   SP          SP                                      SP                          SP        SP                
+                       Y           Y    Y           Y                                       Y                           Y         Y                 
+                                                                                                                                                    
+            </pre>
+        </div>
+        <div class="intro-box">
+            <p>Teretulemast H&auml;kisedalehte lehele. Siin saab lahendada erinevaid k&uuml;berturvalisusega seotud &uuml;lesandeid.</p>
+        </div>
+        <div class="terminal-box">
+            <div>Loading hacking modules...</div>
+            <div>Initializing terminal...</div>
+            <div class="input-line">Click below to start your first lesson!</div>
+        </div>
+        <button class="button" onclick="window.location.href='level1.html'">Go to Level 1</button>
+        <button class="button" onclick="window.location.href='level2.html'">Go to Level 2</button>
+        <button class="button" onclick="window.location.href='level3.html'">Go to Level 3</button>
+        <button class="button" onclick="window.location.href='categories.html'">View Categories</button>
+    </div>
+
+    <script>
+        // Function to scale the ASCII art font size based on container width
+        function scaleAsciiArt() {
+            const asciiHeader = document.getElementById('ascii-header');
+            const containerWidth = asciiHeader.offsetWidth; // Get container width
+            const asciiText = asciiHeader.querySelector('pre').textContent;
+            const maxCharsPerLine = Math.max(...asciiText.split('\n').map(line => line.length)); // Find the longest line
+
+            // Calculate font size based on container width and longest line
+            let fontSize = (containerWidth / maxCharsPerLine) * 1.5; // Adjust multiplier as needed
+
+            // Set minimum and maximum font sizes
+            const minFontSize = 12; // Minimum font size (for mobile)
+            const maxFontSize = 24; // Maximum font size (for desktop)
+            fontSize = Math.min(Math.max(fontSize, minFontSize), maxFontSize); // Clamp the font size
+
+            asciiHeader.style.fontSize = `${fontSize}px`;
+        }
+
+        // Scale the ASCII art on page load and window resize
+        window.addEventListener('load', scaleAsciiArt);
+        window.addEventListener('resize', scaleAsciiArt);
+    </script>
+</body>
+</html>
