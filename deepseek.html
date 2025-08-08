@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HackVerse - Learn Ethical Hacking</title>
+    <style>
+        body {
+            background-color: #0a0a0a;
+            color: #00ff00;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .container {
+            max-width: 75%;
+            margin: 0 auto;
+            flex: 1;
+        }
+        .header {
+            color: #0000c2;
+            white-space: pre;
+            overflow: hidden;
+            margin-top: 20px;
+            padding: 10px;
+        }
+        .terminal-box {
+            background: black;
+            border: 2px solid #00ff00;
+            padding: 20px;
+            width: 100%;
+            margin: 20px auto;
+            text-align: left;
+        }
+        .input-line::before {
+            content: "user@hackverse:~$ ";
+            color: #00ff00;
+        }
+        .button {
+            background: #00ff00;
+            color: black;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+            font-weight: bold;
+            display: block;
+            width: 200px;
+            margin: 10px auto;
+        }
+        .button:hover {
+            background: #33ff33;
+        }
+        .intro-box {
+            background: black;
+            border: 2px solid #00ff00;
+            padding: 15px;
+            width: 100%;
+            margin: 20px auto;
+            text-align: left;
+        }
+        .footer {
+            color: #00ff00;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            border-top: 1px solid #00ff00;
+            font-size: 0.9em;
+            width: 100%;
+        }
+        .footer a {
+            color: #00ff00;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .footer a:hover {
+            color: #33ff33;
+            text-decoration: underline;
+        }
+        .footer p {
+            margin: 5px 0;
+        }
+        @media (max-width: 768px) {
+            .container {
+                max-width: 95%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <div class="intro-box">
+            <p>Teretulemast H&auml;kisedalehte lehele. Siin saab lahendada erinevaid k&uuml;berturvalisusega seotud &uuml;lesandeid.</p>
+        </div>
+        <div class="terminal-box">
+            <div>Loading hacking modules...</div>
+            <div>Initializing terminal...</div>
+            <div class="input-line">Click below to start your first lesson!</div>
+        </div>
+        <button class="button" onclick="window.location.href='level1.html'">Go to Level 1</button>
+        <button class="button" onclick="window.location.href='level2.html'">Go to Level 2</button>
+        <button class="button" onclick="window.location.href='level3.html'">Go to Level 3</button>
+        <button class="button" onclick="window.location.href='categories.html'">View Categories</button>
+    </div>
+
+    <footer class="footer">
+        <p>Questions or feedback? Contact us at <a href="mailto:contact@hackverse.ee">contact@hackverse.ee</a></p>
+        <p>Secure your future - one hack at a time.</p>
+    </footer>
+
+
+</body>
+</html>
