@@ -10,18 +10,34 @@
         .intro-box {
             background: black;
             border: 2px solid #00ff00;
-            padding: 15px;
+            padding: 0px 20px;
             width: 70%;
-            margin: 20px auto;
+            margin: 10px auto;
             text-align: left;
+            line-height: 1.1;
         }
         .terminal-box {
             background: black;
             border: 2px solid #00ff00;
-            padding: 20px;
+            padding: 3px 20px;
             width: 70%;
-            margin: 20px auto;
+            margin: 10px auto;
             text-align: left;
+            line-height: 1.1;
+        }
+        .button {
+            background: #00ff00;
+            color: black;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            display: block;
+            width: 200px;
+            margin: 10px auto;
+        }
+        .button:hover {
+            background: #6eff6e;
         }
 
     </style>
@@ -29,34 +45,28 @@
 <body>
     <div class="container">
         <div class="header">
-            <img src="ascii.png" alt="häkiSedaLehte logo" class="ascii" />
+            <img src="ascii.png" alt="häkiSedaLehte logo" class="ascii" onclick="window.location.href='https://johanjoosep.github.io/hakisedalehte/index.html';">
         </div>
         <div class="main">
             <div class="intro-box">
-                <p>Teretulemast H&auml;kisedalehte lehele. Siin saab lahendada erinevaid k&uuml;berturvalisusega seotud &uuml;lesandeid.</p>
+                <p>Teretulemast! Siin saab lahendada erinevaid k&uuml;berturvalisusega seotud &uuml;lesandeid.</p>
             </div>
             <div class="terminal-box">
-                <div>Loading hacking modules...</div>
-                <div>Initializing terminal...</div>
-                <div class="input-line">Click below to start your first lesson!</div>
+                <p>$ sudo apt update<br>$ sudo apt-get install ülesanded
+                <br>Alla laaditud: ülesanne1<br>Alla laaditud: ülesanne2<br>...<br>7/7 ülesandest valmis lahendamiseks.
             </div>
             <h2>Tasemed</h2>
-            <button onclick="window.location.href='https://johanjoosep.github.io/hakisedalehte/tase1.html';">Tase 1</button>
-            <br>
-            <button onclick="window.location.href='https://johanjoosep.github.io/hakisedalehte/tase2.html';">Tase 2</button>
-            <br>
-            <button onclick="window.location.href='https://johanjoosep.github.io/hakisedalehte/tase3.html';">Tase 3</button>
-            <br>
-            <button onclick="window.location.href='https://johanjoosep.github.io/hakisedalehte/tase4.html';">Tase 4</button>
-            <br>
-            <button onclick="window.location.href='https://johanjoosep.github.io/hakisedalehte/tase5.html';">Tase 5</button>
-            <br>
-            <button onclick="window.location.href='https://johanjoosep.github.io/hakisedalehte/tase6.html';">Tase 6</button>
-            <br>
-            <button onclick="window.location.href='https://johanjoosep.github.io/hakisedalehte/tase7.html';">Tase 7</button>
+            <button class="button" onclick="window.location.href='https://johanjoosep.github.io/hakisedalehte/tase1.html';">Tase 1</button>
+            <button class="button" onclick="window.location.href='https://johanjoosep.github.io/hakisedalehte/tase2.html';">Tase 2</button>
+            <button class="button" onclick="window.location.href='https://johanjoosep.github.io/hakisedalehte/tase3.html';">Tase 3</button>
+            <button class="button" onclick="window.location.href='https://johanjoosep.github.io/hakisedalehte/tase4.html';">Tase 4</button>
+            <button class="button" onclick="window.location.href='https://johanjoosep.github.io/hakisedalehte/tase5.html';">Tase 5</button>
+            <button class="button" onclick="window.location.href='https://johanjoosep.github.io/hakisedalehte/tase6.html';">Tase 6</button>
+            <button class="button" onclick="window.location.href='https://johanjoosep.github.io/hakisedalehte/tase7.html';">Tase 7</button>
         </div>
         <div class="footer">
             <p>hakisedalehte@gmail.com</p>
+            <p>"Suure ligipääsuga kaasneb suur vastutus"</p>
         </div>
     </div>
 </body>
