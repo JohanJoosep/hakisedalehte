@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="et">
+<!--parool on B47bde-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <meta name="description" content="Küberoskuste treenimis lehekülg">
+    <title>Häki seda lehekülge - Tase 1</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="ascii.png" alt="häkiSedaLehte logo" class="ascii" onclick="window.location.href='https://johanjoosep.github.io/hakisedalehte/index.html';">
+        </div>
+        <div class="main">
+            <h2>Tase 1</h2>
+            <p>Leia parool, et liikuda järgmisele tasemele.</p>
+            
+            <input type="text" id="textBox" class="task-input" placeholder="Sisesta parool">
+            <button onclick="checkInput()" class="task-button">Sisesta</button>
+            <button onclick="showVihje()" class="task-button">Näita vihjet</button>
+
+            <p id="vihje" class="vihje">Vihje: Vaata lehe lähtekoodi...</p>
+            <p id="message_vale" class="message_vale" style="display: none;">Vale vastus. Proovi uuesti</p>
+            <p id="message_oige" class="message_oige" style="display: none;">Hea töö!</p>
+            <button id="nextLevel" style="display: none;" class="task-button" onclick="window.location.href='tase2.html';">Tase 2</button>
+        </div>
+        <div class="footer">
+            <p>hakisedalehte@gmail.com</p>
+            <p>"Suure ligipääsuga kaasneb suur vastutus"</p>
+        </div>
+    </div>
+
+    <script>
+        function checkInput() {
+            const input = document.getElementById("textBox").value.trim();
+            const nextLevel = document.getElementById("nextLevel");
+            const messageVale = document.getElementById("message_vale");
+            const messageOige = document.getElementById("message_oige");
+
+            if (input === "B47bde") {
+                message_vale.style.display = "none";
+                message_oige.style.display = "block";
+                nextLevel.style.display = "block";
+            } else {
+                message_oige.style.display = "none";
+                nextLevel.style.display = "none";
+                message_vale.style.display = "block";
+            }
+        }
+
+        function showVihje() {
+            const vihje = document.getElementById("vihje");
+            const isHidden = window.getComputedStyle(vihje).display === "none"; /* kui vihje on peidetud (display: none), siis isHidden on True, muidu False */
+            vihje.style.display = isHidden ? "block" : "none"; /* kui isHidden on True, näita vihjet (block), kui False, peida (none) */
+        }
+    </script>
+</body>
+</html>
