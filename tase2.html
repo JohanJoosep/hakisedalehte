@@ -1,61 +1,59 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="et">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- refresh 
-    <meta http-equiv="refresh" content="5"> -->
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
     <meta name="description" content="Küberoskuste treenimis lehekülg">
-    <title>H&auml;ki seda lehek&uuml;lge</title>
-    <style> 
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
-        }
-        header {
-            background: #333;
-            color: #fff;
-            padding: 1rem 0;
-        }
-        main {
-            padding: 1.5rem;
+    <title>Häki seda lehekülge - Tase 2</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body> 
+    <div class="container">
+        <div class="header">
+            <img src="ascii.png" alt="häkiSedaLehte logo" class="ascii" onclick="window.location.href='https://johanjoosep.github.io/hakisedalehte/index.html';">
+        </div>
+        <div class="main">
+            <h2>Tase 2</h2>
+            <p>Leia parool, et liikuda järgmisele tasemele.</p>
+            
+            <input type="text" id="textBox" class="task-input" placeholder="Sisesta parool"> 
+            <button onclick="checkInput()" class="task-button">Sisesta</button>
+            <button onclick="showVihje()" class="task-button">Näita vihjet</button>
+
+            <p id="vihje" class="vihje">Vihje: Vaata lehe lähtekoodi...</p>
+            <p id="message_vale" class="message_vale" style="display: none;">Vale vastus. Proovi uuesti</p>
+            <p id="message_oige" class="message_oige" style="display: none;">Hea töö!</p>
+            <button id="nextLevel" style="display: none;" class="task-button" onclick="window.location.href='tase3.html';">Tase 3</button>
+        </div>
+        <div class="footer">
+            <p>hakisedalehte@gmail.com</p>
+            <p>"Suure ligipääsuga kaasneb suur vastutus"</p>
+        </div>
+    </div>
+
+    <script>
+        function checkInput() { 
+            const input = document.getElementById("textBox").value.trim();
+            const nextLevel = document.getElementById("nextLevel");
+            const messageVale = document.getElementById("message_vale");
+            const messageOige = document.getElementById("message_oige");
+
+            if (input === "B47bde") {
+                message_vale.style.display = "none";
+                message_oige.style.display = "block";
+                nextLevel.style.display = "block";
+            } else {
+                message_oige.style.display = "none";
+                nextLevel.style.display = "none";
+                message_vale.style.display = "block";
+            }
         }
 
-        a {
-            color: #007bff;
-            text-decoration: none;
+        function showVihje() { 
+            const vihje = document.getElementById("vihje");
+            const isHidden = window.getComputedStyle(vihje).display === "none"; /* kui vihje on peidetud (display: none), siis isHidden on True, muidu False */
+            vihje.style.display = isHidden ? "block" : "none"; /* kui isHidden on True, näita vihjet (block), kui False, peida (none) */
         }
-    </style>
-</head>
-<body>
-    <header>
-        <button onclick="window.location.href='https://johanjoosep.github.io/hakisedalehte/';">Kodu</button>
-    </header>
-    <main>
-        <h2>Tase 2</h2>
-        <input type="text" id="textBox" placeholder="Parool"> 
-        <button onclick="checkInput()">Submit</button> 
-        <p id="message" style="display: none;">Hea töö!</p>
-        <button id="newButton" style="display: none;" onclick="window.location.href='https://johanjoosep.github.io/hakisedalehte/tase3.html';">Tase 3</button> <!-- järgmisele tasemele -->
-        <script>
-            function checkInput() {
-                const input = document.getElementById("textBox").value;
-                const message = document.getElementById("message");
-                const newButton = document.getElementById("newButton");
-    
-                if (input === "uI8Ä%") { 
-                    message.style.display = "block";
-                    newButton.style.display = "block";
-                } else {
-                    alert("😢 Vale parool! Proovi uuesti");
-                }
-            }
-        </script>
-    </main>
+    </script>
 </body>
 </html>
