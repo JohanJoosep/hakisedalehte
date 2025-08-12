@@ -1,82 +1,71 @@
 <!DOCTYPE html>
 <html lang="et">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Küberoskuste treenimis lehekülg" />
-    <title>H&auml;ki seda lehek&uuml;lge</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
-        }
-        header {
-            background: #333;
-            color: #fff;
-            padding: 1rem 0;
-        }
-        main {
-            padding: 1.5rem;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <meta name="description" content="Küberoskuste treenimis lehekülg">
+    <title>Häki seda lehekülge - Tase 4</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-    <header>
-        <button onclick="window.location.href='https://johanjoosep.github.io/hakisedalehte/';">Kodu</button>
-    </header>
-    <main>
-        <h2>Tase 4</h2>
-        <p>Siin on krüpteeritud sõnum. Püüa aru saada, millist šifreeringut kasutati ja sisesta õige parool!</p>
-        <p><strong>Krüpteeritud tekst:</strong> "ptkqjn"</p>
-        <input type="text" id="passwordBox" placeholder="Sisesta parool" />
-        <button onclick="checkPassword()">Kontrolli</button>
+<body> 
+    <div class="container">
+        <div class="header">
+            <img src="ascii.png" alt="häkiSedaLehte logo" class="ascii" onclick="window.location.href='https://johanjoosep.github.io/hakisedalehte/index.html';">
+        </div>
+        <div class="main">
+            <h2>Tase 4</h2>
+            <p>Siin on krüpteeritud sõnum. Püüa aru saada, millist šifreeringut kasutati ja sisesta õige parool!</p>
+            <p><strong>Krüpteeritud tekst:</strong> "98 71 70 111 90 87 53 107"</p>
+            <input type="text" id="textBox" class="task-input" placeholder="Sisesta parool"> 
+            <button onclick="checkInput()" class="task-button">Sisesta</button>
+            <button onclick="showVihje()" class="task-button">Näita vihjet</button>
 
-        <p id="message" style="display: none; color: green; font-weight: bold;">Hea töö!</p>
-        <button id="newButton" style="display: none;" onclick="window.location.href='https://johanjoosep.github.io/hakisedalehte/tase5.html';">Tase 5</button>
+            <p id="vihje" class="vihje">Vihje: kasuta cypher identifierit ja nt cyberchefi dekrüpteerimiseks, topelt krüpteeritud</p>
+            <p id="message_vale" class="message_vale" style="display: none;">Vale vastus. Proovi uuesti</p>
+            <p id="message_oige" class="message_oige" style="display: none;">Hea töö!</p>
+            <button id="nextLevel" style="display: none;" class="task-button" onclick="window.location.href='tase5.html';">Tase 5</button>
 
-        <h3>Proovi ise krüpteerida:</h3>
-        <input type="text" id="plainText" placeholder="Sisesta tavaline tekst" />
-        <button onclick="encryptUserInput()">Krüpteeri</button>
-        <p id="encryptedOutput"></p>
-    </main>
+            <p id="encryptedOutput"></p>
+        </main>
+        <div class="footer">
+        <p>hakisedalehte@gmail.com</p>
+        <p>"Suure ligipääsuga kaasneb suur vastutus"</p>
+    </div>
+</div>
 
     <script>
-        function caesarEncrypt(text, shift) {
-            return text.split('').map(char => {
-                if (char.match(/[a-z]/)) {
-                    let code = char.charCodeAt(0);
-                    let newCode = ((code - 97 + shift) % 26) + 97;
-                    return String.fromCharCode(newCode);
-                } else {
-                    return char;
-                }
-            }).join('');
+        async function hashString(message) {
+            const msgBuffer = new TextEncoder().encode(message);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            return hashArray.map(b => ('00' + b.toString(16)).slice(-2)).join('');
         }
 
-        function checkPassword() {
-            const userInput = document.getElementById('passwordBox').value.trim().toLowerCase();
-            const correctAnswer = "koflei";
-            const messageEl = document.getElementById('message');
-            const newButton = document.getElementById('newButton');
+        const correctHash = "9dee6128dc9ca712d84eaa4b587ed62c38e0ea1f3abb47ee57d6c3be4f01620f";
 
-            if (userInput === correctAnswer) {
-                messageEl.style.display = 'block';
-                newButton.style.display = 'inline-block';
+        async function checkInput() {
+            const input = document.getElementById('textBox').value.trim();
+            const hashedInput = await hashString(input);
+            //document.getElementById('encryptedOutput').textContent = `Krüpteeritud tekst: ${hashedInput}`;
+            const nextLevel = document.getElementById("nextLevel");
+            const messageVale = document.getElementById("message_vale");
+            const messageOige = document.getElementById("message_oige");
+
+            if (hashedInput === correctHash) {
+                messageVale.style.display = "none";
+                messageOige.style.display = "block";
+                nextLevel.style.display = "block";
             } else {
-                alert("❌ Vale parool! Proovi uuesti.");
-                messageEl.style.display = 'none';
-                newButton.style.display = 'none';
+                messageOige.style.display = "none";
+                nextLevel.style.display = "none";
+                messageVale.style.display = "block";
             }
         }
 
-        function encryptUserInput() {
-            const plainText = document.getElementById('plainText').value.trim().toLowerCase();
-            const encrypted = caesarEncrypt(plainText, 5);
-            document.getElementById('encryptedOutput').textContent = `Krüpteeritud tekst: ${encrypted}`;
+        function showVihje() { 
+            const vihje = document.getElementById("vihje");
+            const isHidden = window.getComputedStyle(vihje).display === "none"; /* kui vihje on peidetud (display: none), siis isHidden on True, muidu False */
+            vihje.style.display = isHidden ? "block" : "none"; /* kui isHidden on True, näita vihjet (block), kui False, peida (none) */
         }
     </script>
 </body>
