@@ -1,72 +1,79 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="et">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
     <meta name="description" content="Küberoskuste treenimis lehekülg">
-    <title>H&auml;ki seda lehek&uuml;lge</title>
-    <style> 
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
-        }
-        header {
-            background: #333;
-            color: #fff;
-            padding: 1rem 0;
-        }
-        main {
-            padding: 1.5rem;
-        }
-        a {
-            color: #007bff;
-            text-decoration: none;
+    <title>Häki seda lehekülge - Tase 3</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .kass {
+            display: block;
+            margin: 10px auto;
+            height: 60%;
         }
     </style>
 </head>
-<body>
-    <header>
-        <button onclick="window.location.href='https://johanjoosep.github.io/hakisedalehte/';">Kodu</button>
-    </header>
-    <main>
-        <h2>Tase 3</h2>
-        <p>Lahenduse võib leida sellest pildist.</p>
-        <img src="https://github.com/JohanJoosep/hakisedalehte/blob/main/Parooliga_pilt.jpg?raw=true" height="400">
-        <br>
-        <input type="text" id="textBox" placeholder="Parool">
-        <button onclick="checkInput()">Submit</button>
-        
-        <p id="message" style="display: none;">Hea töö!</p>
-        <button id="newButton" style="display: none;" onclick="window.location.href='https://johanjoosep.github.io/hakisedalehte/tase4.html';">Tase 4</button>
-        
-        <script>
-            async function sha256(message) {
-                const msgBuffer = new TextEncoder().encode(message);
-                const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
-                const hashArray = Array.from(new Uint8Array(hashBuffer));
-                return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+<body> 
+    <div class="container">
+        <div class="header">
+            <img src="ascii.png" alt="häkiSedaLehte logo" class="ascii" onclick="window.location.href='https://johanjoosep.github.io/hakisedalehte/index.html';">
+        </div>
+        <div class="main">
+            <h2>Tase 3</h2>
+            <p>Lahenduse võib leida sellest pildist.</p>
+            <img class="kass" src="https://github.com/JohanJoosep/hakisedalehte/blob/main/Parooliga_pilt.jpg?raw=true">
+            <input type="text" id="textBox" class="task-input" placeholder="Sisesta parool"> 
+            <button onclick="checkInput()" class="task-button">Sisesta</button>
+            <button onclick="showVihje()" class="task-button">Näita vihjet</button>
+
+            <p id="vihje" class="vihje">Vihje: vaata pilti binary tekstina, nt notepadis, otsi parooli</p>
+            <p id="message_vale" class="message_vale" style="display: none;">Vale vastus. Proovi uuesti</p>
+            <p id="message_oige" class="message_oige" style="display: none;">Hea töö!</p>
+            <button id="nextLevel" style="display: none;" class="task-button" onclick="window.location.href='tase3.html';">Tase 3</button>
+
+            <p id="encryptedOutput"></p>
+        </main>
+        <div class="footer">
+        <p>hakisedalehte@gmail.com</p>
+        <p>"Suure ligipääsuga kaasneb suur vastutus"</p>
+    </div>
+</div>
+
+    <script>
+        async function sha256(message) {
+            const msgBuffer = new TextEncoder().encode(message);
+            const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+        }
+
+        const correctHash = "1a12799b69ac511db5df0bad8e8004af02e4f2bab9246e8c9bd2b08690de80d2";
+
+        async function checkInput() {
+            const input = document.getElementById('textBox').value.trim();
+            const hashedInput = await sha256(input);
+            //document.getElementById('encryptedOutput').textContent = `Krüpteeritud tekst: ${hashedInput}`;
+            const nextLevel = document.getElementById("nextLevel");
+            const messageVale = document.getElementById("message_vale");
+            const messageOige = document.getElementById("message_oige");
+
+            if (hashedInput === correctHash) {
+                messageVale.style.display = "none";
+                messageOige.style.display = "block";
+                nextLevel.style.display = "block";
+            } else {
+                messageOige.style.display = "none";
+                nextLevel.style.display = "none";
+                messageVale.style.display = "block";
             }
+        }
 
-            async function checkInput() {
-                const input = document.getElementById("textBox").value;
-                const message = document.getElementById("message");
-                const newButton = document.getElementById("newButton");
-
-                const correctHash = "1a12799b69ac511db5df0bad8e8004af02e4f2bab9246e8c9bd2b08690de80d2";
-
-                const inputHash = await sha256(input);
-                if (inputHash === correctHash) {
-                    message.style.display = "block";
-                    newButton.style.display = "block";
-                } else {
-                    alert("\ud83d\ude2d Vale parool! Proovi uuesti");
-                }
-            }
-        </script>
-    </main>
+        function showVihje() { 
+            const vihje = document.getElementById("vihje");
+            const isHidden = window.getComputedStyle(vihje).display === "none"; /* kui vihje on peidetud (display: none), siis isHidden on True, muidu False */
+            vihje.style.display = isHidden ? "block" : "none"; /* kui isHidden on True, näita vihjet (block), kui False, peida (none) */
+        }
+    </script>
 </body>
 </html>
