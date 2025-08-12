@@ -1,74 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="et">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Häki seda lehekülge</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
-        }
-        header {
-            background: #333;
-            color: #fff;
-            padding: 1rem 0;
-        }
-        main {
-            padding: 1.5rem;
-        }
-        a {
-            color: #007bff;
-            text-decoration: none;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <meta name="description" content="Küberoskuste treenimis lehekülg">
+    <title>Häki seda lehekülge - Tase 6</title>
+    <link rel="stylesheet" href="styles.css">
+
 </head>
-<body>
-    <header>
-        <button onclick="window.location.href='https://johanjoosep.github.io/hakisedalehte/';">Kodu</button>
-    </header>
-    <main>
-        <h2>Tase 6</h2>
-        <p>Leia parool dekodeerides.</p>
+<body> 
+    <div class="container">
+        <div class="header">
+            <img src="ascii.png" alt="häkiSedaLehte logo" class="ascii" onclick="window.location.href='https://johanjoosep.github.io/hakisedalehte/index.html';">
+        </div>
+        <div class="main">
+            <h2>Tase 6</h2>
+            <p>Leia parool dekodeerides.</p>
+            <input type="text" id="textBox" class="task-input" placeholder="Sisesta parool"> 
+            <button onclick="checkInput()" class="task-button">Sisesta</button>
+            <button onclick="showVihje()" class="task-button">Näita vihjet</button>
 
-        <input type="text" id="textBox" placeholder="Parool" />
-        <button onclick="checkInput()">Submit</button>
+            <p id="vihje" class="vihje">Vihje: cipher identifier, cyberchef</p>
+            <p id="message_vale" class="message_vale" style="display: none;">Vale vastus. Proovi uuesti</p>
+            <p id="message_oige" class="message_oige" style="display: none;">Hea töö!</p>
+            <button id="nextLevel" style="display: none;" class="task-button" onclick="window.location.href='tase7.html';">Tase 7</button>
+        </div>
+        <div class="footer">
+        <p>hakisedalehte@gmail.com</p>
+        <p>"Suure ligipääsuga kaasneb suur vastutus"</p>
+    </div>
+</div>
 
-        <p id="message" style="display: none;">Hea töö!</p>
-        <p id="encodedOutput"></p>
-        <button
-            id="newButton"
-            style="display: none;"
-            onclick="window.location.href='https://johanjoosep.github.io/hakisedalehte/tase7.html';"
-        >
-            Tase 7
-        </button>
+    <script>
+        function decode(str) {
+            return atob(str);
+        }
 
-        <script>
-            function decode(str) {
-                return atob(str);
+        async function checkInput() {
+            const input = document.getElementById('textBox').value.trim();
+            const nextLevel = document.getElementById("nextLevel");
+            const messageVale = document.getElementById("message_vale");
+            const messageOige = document.getElementById("message_oige");
+
+            const correct = decode("QigqJlRn");
+
+            if (input === correct) {
+                messageVale.style.display = "none";
+                messageOige.style.display = "block";
+                nextLevel.style.display = "block";
+            } else {
+                messageOige.style.display = "none";
+                nextLevel.style.display = "none";
+                messageVale.style.display = "block";
             }
+        }
 
-            function checkInput() {
-                const input = document.getElementById("textBox").value.trim();
-                const message = document.getElementById("message");
-                const newButton = document.getElementById("newButton");
-                const encodedOutput = document.getElementById("encodedOutput");
-
-                const correct = decode("c2lnbWE=");
-
-                if (input === correct) {
-                    message.style.display = "block";
-                    newButton.style.display = "inline-block";
-                } else {
-                    alert("❌ Vale parool!");
-                }
-            }
-        </script>
-    </main>
+        function showVihje() { 
+            const vihje = document.getElementById("vihje");
+            const isHidden = window.getComputedStyle(vihje).display === "none"; /* kui vihje on peidetud (display: none), siis isHidden on True, muidu False */
+            vihje.style.display = isHidden ? "block" : "none"; /* kui isHidden on True, näita vihjet (block), kui False, peida (none) */
+        }
+    </script>
 </body>
 </html>
